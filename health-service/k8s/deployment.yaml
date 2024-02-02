@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-service
+spec:
+  selector:
+    matchLabels:
+      app: expressmicroservice2
+  template:
+    metadata:
+      labels:
+        app: expressmicroservice2
+    spec:
+      containers:
+        - name: expressmicroservice2
+          image: dockershome/expressmicroserviceenvoy2
+          ports:
+            - containerPort: 8080

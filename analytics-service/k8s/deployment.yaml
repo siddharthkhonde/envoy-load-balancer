@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analytics-service
+spec:
+  selector:
+    matchLabels:
+      app: expressmicroservice1
+  template:
+    metadata:
+      labels:
+        app: expressmicroservice1
+    spec:
+      containers:
+        - name: expressmicroservice1
+          image: dockershome/expressmicrosserviceenvoy1
+          ports:
+            - containerPort: 8080

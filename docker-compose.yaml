@@ -12,7 +12,7 @@ services:
 
   service1:
     build:
-      context: ./health-service
+      context: ./analytics-service
       dockerfile: Dockerfile
     networks:
       envoymesh:
@@ -23,7 +23,7 @@ services:
 
   service2:
     build:
-      context: ./analytics-service
+      context: ./health-service
       dockerfile: Dockerfile
     networks:
       envoymesh:
