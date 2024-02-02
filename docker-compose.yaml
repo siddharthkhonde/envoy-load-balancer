@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  front-envoy:
+    build:
+      context: ./front-envoy-proxy
+      dockerfile: Dockerfile
+    networks:
+      - envoymesh
+    ports:
+      - "8000:80"
+      - "8001:8001"
+
+  service1:
+    build:
+      context: ./health-service
+      dockerfile: Dockerfile
+    networks:
+      envoymesh:
+        aliases:
+          - service1
+    expose:
+      - "80"
+
+  service2:
+    build:
+      context: ./analytics-service
+      dockerfile: Dockerfile
+    networks:
+      envoymesh:
+        aliases:
+          - service2
+    expose:
+      - "80"
+
+networks:
+  envoymesh: {}
